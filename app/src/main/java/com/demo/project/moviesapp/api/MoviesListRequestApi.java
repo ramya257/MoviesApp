@@ -5,4 +5,6 @@ package com.demo.project.moviesapp.api;
  */
 
 public interface MoviesListRequestApi {
+
+
 }
