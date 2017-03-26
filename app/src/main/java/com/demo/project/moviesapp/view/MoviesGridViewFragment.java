@@ -4,11 +4,14 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import com.demo.project.moviesapp.R;
+import com.demo.project.moviesapp.model.MoviesListProvider;
 import com.demo.project.moviesapp.model.data.MoviesListDataDetails;
 
 import java.util.List;
@@ -30,6 +33,10 @@ public class MoviesGridViewFragment extends Fragment implements MoviesView {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private ProgressBar progressBar;
+    private RecyclerView recyclerView;
+    private MoviesListProvider moviesListProvider;
+    private MoviesListAdapter moviesListAdapter;
 
     private OnFragmentInteractionListener mListener;
 
@@ -68,7 +75,8 @@ public class MoviesGridViewFragment extends Fragment implements MoviesView {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_movies_list_two, container, false);
+        View view= inflater.inflate(R.layout.fragment_movies_grid_view, container, false);
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
