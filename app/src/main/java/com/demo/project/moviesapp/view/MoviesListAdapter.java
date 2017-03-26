@@ -8,6 +8,7 @@ import android.view.ViewGroup;
  */
 
 public class MoviesListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         return null;

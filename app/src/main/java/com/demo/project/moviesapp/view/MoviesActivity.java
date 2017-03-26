@@ -11,11 +11,8 @@ import com.demo.project.moviesapp.R;
 import butterknife.BindView;
 
 public class MoviesActivity extends AppCompatActivity {
-    @BindView(R.id.toolbar)
     private Toolbar toolbar;
-    @BindView(R.id.viewPager)
     private ViewPager viewPager;
-    @BindView(R.id.tabs)
     private TabLayout tablayout;
     private MoviesViewPagerAdapter moviesViewPagerAdapter;
 
@@ -24,16 +21,19 @@ public class MoviesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movies);
+//        toolbar.setTitle("MoviesApp");
+        toolbar=(Toolbar)findViewById(R.id.toolbar);
         toolbar.setTitle("MoviesApp");
         setSupportActionBar(toolbar);
+        viewPager = (ViewPager) findViewById(R.id.viewPager);
         setupViewPager(viewPager);
+        tablayout=(TabLayout)findViewById(R.id.tabs);
         tablayout.setupWithViewPager(viewPager);
     }
     private void setupViewPager(ViewPager viewPager) {
         moviesViewPagerAdapter=new MoviesViewPagerAdapter(getSupportFragmentManager());
-        MoviesListOneFragment moviesListFragment= MoviesListOneFragment.newInstance(moviesViewPagerAdapter.getItem())
-        moviesViewPagerAdapter.addFragment(new MoviesListOneFragment(),"MoviesList1");
-        moviesViewPagerAdapter.addFragment(new MoviesListTwoFragment(),"MoviesList2");
+        moviesViewPagerAdapter.addFragment(new MoviesLinearViewFragment(),"MoviesLinearList");
+        moviesViewPagerAdapter.addFragment(new MoviesGridViewFragment(),"MoviesGridList");
         viewPager.setAdapter(moviesViewPagerAdapter);
     }
 

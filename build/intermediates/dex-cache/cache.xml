@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="/home/ramya/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit2/converter-gson/2.2.0/a09926806199499a20b2f5168779499abfa33342/converter-gson-2.2.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="a09926806199499a20b2f5168779499abfa33342">
+        <dex dex="/home/ramya/AndroidStudioProjects/MoviesApp/app/build/intermediates/pre-dexed/debug/converter-gson-2.2.0_70052086403956e62f3309224633a5dfa6f46bb7.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/ramya/AndroidStudioProjects/MoviesApp/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/25.2.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="cb454b52545859ed2f24a6c01366805b0fa04b22">
+        <dex dex="/home/ramya/AndroidStudioProjects/MoviesApp/app/build/intermediates/pre-dexed/debug/com.android.support-animated-vector-drawable-25.2.0_ecbf59d0e3177718e671ceb94bd39943b398efd7.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/ramya/AndroidStudioProjects/MoviesApp/app/build/intermediates/exploded-aar/com.jakewharton/butterknife/8.5.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="19f281a785ca0eb5f6799fc7bf7ca199a9ca1e8b">
+        <dex dex="/home/ramya/AndroidStudioProjects/MoviesApp/app/build/intermediates/pre-dexed/debug/com.jakewharton-butterknife-8.5.1_b61efa7f254e341b46cdd04070592e252affdb86.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/ramya/AndroidStudioProjects/MoviesApp/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/25.2.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ee394a892dd21c03a528139c1e8d4e0e1264ac84">
+        <dex dex="/home/ramya/AndroidStudioProjects/MoviesApp/app/build/intermediates/pre-dexed/debug/com.android.support-support-media-compat-25.2.0_adebfaa8a212049e6a187c986e2244941b6423c2.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/ramya/AndroidStudioProjects/MoviesApp/app/build/intermediates/exploded-aar/com.android.support/design/25.2.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ea6a989b83d19b1b461281e0475a6cd6514897f8">
+        <dex dex="/home/ramya/AndroidStudioProjects/MoviesApp/app/build/intermediates/pre-dexed/debug/com.android.support-design-25.2.0_e030c7cb492cce1f865453d85c27dbfbc8a7d070.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/ramya/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp/3.6.0/69edde9fc4b01c9fd51d25b83428837478c27254/okhttp-3.6.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="69edde9fc4b01c9fd51d25b83428837478c27254">
+        <dex dex="/home/ramya/AndroidStudioProjects/MoviesApp/app/build/intermediates/pre-dexed/debug/okhttp-3.6.0_2cee02fee6bd285de7a110c603031183b4190cba.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/ramya/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.7/751f548c85fa49f330cecbb1875893f971b33c4e/gson-2.7.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="751f548c85fa49f330cecbb1875893f971b33c4e">
+        <dex dex="/home/ramya/AndroidStudioProjects/MoviesApp/app/build/intermediates/pre-dexed/debug/gson-2.7_27c157097bfe64952198338ae56bb6d849300584.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/ramya/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/logging-interceptor/3.4.1/381fc1096ba65040d8e80ea43b2e1d9bad02345e/logging-interceptor-3.4.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="381fc1096ba65040d8e80ea43b2e1d9bad02345e">
+        <dex dex="/home/ramya/AndroidStudioProjects/MoviesApp/app/build/intermediates/pre-dexed/debug/logging-interceptor-3.4.1_224493da078000f645243942002a40842fd8255e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/ramya/AndroidStudioProjects/MoviesApp/app/build/intermediates/exploded-aar/com.android.support/cardview-v7/25.2.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="30a4938ea5235ccf532b3e9f04200e68547e36ad">
+        <dex dex="/home/ramya/AndroidStudioProjects/MoviesApp/app/build/intermediates/pre-dexed/debug/com.android.support-cardview-v7-25.2.0_736571e10a76f5aa369d2b667273f0c18f4f0f5e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/ramya/.gradle/caches/modules-2/files-2.1/com.github.bumptech.glide/glide/3.7.0/9e9eeaf9948ee4d6c3ab354e8dc14368f16994a4/glide-3.7.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="9e9eeaf9948ee4d6c3ab354e8dc14368f16994a4">
+        <dex dex="/home/ramya/AndroidStudioProjects/MoviesApp/app/build/intermediates/pre-dexed/debug/glide-3.7.0_199b69d1d5d1311454b86bf6de64e09e5bc6c467.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/ramya/AndroidStudioProjects/MoviesApp/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/25.2.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="152de8da301561dcb0946471697a420d8f7a68c5">
+        <dex dex="/home/ramya/AndroidStudioProjects/MoviesApp/app/build/intermediates/pre-dexed/debug/com.android.support-recyclerview-v7-25.2.0_5c4eb6fe2c86180d1bac6dd2980523b95938353c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/ramya/AndroidStudioProjects/MoviesApp/app/build/intermediates/exploded-aar/com.android.support/transition/25.2.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="e51c2f662bb72419632af5192553c37e33890a99">
+        <dex dex="/home/ramya/AndroidStudioProjects/MoviesApp/app/build/intermediates/pre-dexed/debug/com.android.support-transition-25.2.0_ca811b2201437dd22c4394e3e5e023e0d6edf04e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/ramya/AndroidStudioProjects/MoviesApp/app/build/intermediates/exploded-aar/com.android.support/support-fragment/25.2.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="8fe8a8f77d651982ce5e18f6187dc4daf914ac57">
+        <dex dex="/home/ramya/AndroidStudioProjects/MoviesApp/app/build/intermediates/pre-dexed/debug/com.android.support-support-fragment-25.2.0_5a00670a96139c4b08f3e70ac452800b779ce4d0.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/ramya/AndroidStudioProjects/MoviesApp/app/build/intermediates/exploded-aar/com.android.support/support-v4/25.2.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/home/ramya/AndroidStudioProjects/MoviesApp/app/build/intermediates/pre-dexed/debug/com.android.support-support-v4-25.2.0_58aa82fd7d5bf6b4f458537d85427f2101fe287b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/ramya/.gradle/caches/modules-2/files-2.1/com.jakewharton/butterknife-annotations/8.5.1/bb67dad90bab7cd77a8f7f1b8442b47e3a2326bc/butterknife-annotations-8.5.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="bb67dad90bab7cd77a8f7f1b8442b47e3a2326bc">
+        <dex dex="/home/ramya/AndroidStudioProjects/MoviesApp/app/build/intermediates/pre-dexed/debug/butterknife-annotations-8.5.1_1943b170f7f5eb4ab17d51a0016e72e5ee08c668.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/ramya/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/25.2.0/support-annotations-25.2.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="4a5a82a027706397fff621b22fd6fa796e91d7c5">
+        <dex dex="/home/ramya/AndroidStudioProjects/MoviesApp/app/build/intermediates/pre-dexed/debug/support-annotations-25.2.0_7a1b6ae522957adf41e2847174075a675197fbef.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/ramya/AndroidStudioProjects/MoviesApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.2.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="702d339bc0a81d21354cd7e2cf2b67225fa4a16c">
+        <dex dex="/home/ramya/AndroidStudioProjects/MoviesApp/app/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-25.2.0_3f7cc76cbcdf1c561bd489f6e6d3cd8feff5b55b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/ramya/AndroidStudioProjects/MoviesApp/app/build/intermediates/exploded-aar/com.android.support/support-compat/25.2.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="67eb33110dbacb46a48175b08ae0c96761d2c17d">
+        <dex dex="/home/ramya/AndroidStudioProjects/MoviesApp/app/build/intermediates/pre-dexed/debug/com.android.support-support-compat-25.2.0_6df2eb0818fcef49ed01565357cf613c03e45447.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/ramya/AndroidStudioProjects/MoviesApp/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/25.2.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="e820b7be8c035dd522da4bc822e8a76c8e27921a">
+        <dex dex="/home/ramya/AndroidStudioProjects/MoviesApp/app/build/intermediates/pre-dexed/debug/com.android.support-support-core-utils-25.2.0_73bfb5447d460511570f538c70facaa52371b76e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/ramya/AndroidStudioProjects/MoviesApp/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/25.2.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="810f41e5b7fd99f196ebeabe865ba2c54e7e76dc">
+        <dex dex="/home/ramya/AndroidStudioProjects/MoviesApp/app/build/intermediates/pre-dexed/debug/com.android.support-support-vector-drawable-25.2.0_ed038fd77454112fdcf0bda527e090c5121c67c0.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/ramya/.gradle/caches/modules-2/files-2.1/com.squareup.okio/okio/1.11.0/840897fcd7223a8143f1d9b6f69714e7be34fd50/okio-1.11.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="840897fcd7223a8143f1d9b6f69714e7be34fd50">
+        <dex dex="/home/ramya/AndroidStudioProjects/MoviesApp/app/build/intermediates/pre-dexed/debug/okio-1.11.0_0b042dd92ee7551130040583c6b9fcb521ab0cc5.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/ramya/AndroidStudioProjects/MoviesApp/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/25.2.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="fa0446a14ed5dd3725047d6399ffea771a564b30">
+        <dex dex="/home/ramya/AndroidStudioProjects/MoviesApp/app/build/intermediates/pre-dexed/debug/com.android.support-support-core-ui-25.2.0_2f8307e1611b4bab3bba123cd02644d4dd7a7fa0.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/ramya/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit2/retrofit/2.2.0/41e67dba73c3347e4503761642c39d0e06ca1f2/retrofit-2.2.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="041e67dba73c3347e4503761642c39d0e06ca1f2">
+        <dex dex="/home/ramya/AndroidStudioProjects/MoviesApp/app/build/intermediates/pre-dexed/debug/retrofit-2.2.0_0c2be49728eeb7c3ebf07d6e7875e70300bfd4eb.jar" />
+    </item>
+
+</items>
