@@ -5,5 +5,5 @@ package com.demo.project.moviesapp.helper;
  */
 
 public class Urls {
-    public static final String BASE_URL="http://www.omdbapi.com/";
+    public static final String BASE_URL="http://www.omdbapi.com";
 }

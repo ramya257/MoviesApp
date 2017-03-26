@@ -12,7 +12,7 @@ import retrofit2.http.Query;
  */
 
 public interface MoviesListRequestApi {
-    @GET("")
+    @GET("/")
     Call<MoviesListData>getMoviesList(@Query("s")String search_query,@Query("page") int page);
 
 }

@@ -4,15 +4,21 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.demo.project.moviesapp.R;
 import com.demo.project.moviesapp.model.MoviesListProvider;
+import com.demo.project.moviesapp.model.RetrofitMoviesListProvider;
 import com.demo.project.moviesapp.model.data.MoviesListDataDetails;
+import com.demo.project.moviesapp.presenter.MoviesListPresenter;
+import com.demo.project.moviesapp.presenter.MoviesListPresenterImpl;
 
 import java.util.List;
 
@@ -37,6 +43,7 @@ public class MoviesGridViewFragment extends Fragment implements MoviesView {
     private RecyclerView recyclerView;
     private MoviesListProvider moviesListProvider;
     private MoviesListAdapter moviesListAdapter;
+    private MoviesListPresenter moviesListPresenter;
 
     private OnFragmentInteractionListener mListener;
 
@@ -76,7 +83,20 @@ public class MoviesGridViewFragment extends Fragment implements MoviesView {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_movies_grid_view, container, false);
+        progressBar=(ProgressBar)view.findViewById(R.id.progressBar);
+        recyclerView=(RecyclerView)view.findViewById(R.id.recyclerView);
+        moviesListAdapter=new MoviesListAdapter(getContext(),1);
+        initialise();
         return view;
+    }
+
+    private void initialise() {
+        moviesListPresenter= new MoviesListPresenterImpl(this,new RetrofitMoviesListProvider());
+        GridLayoutManager gridLayoutManager= new GridLayoutManager(getContext(),2);
+        recyclerView.setLayoutManager(gridLayoutManager);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setAdapter(moviesListAdapter);
+        moviesListPresenter.getMoviesList("batman",2);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -99,18 +119,26 @@ public class MoviesGridViewFragment extends Fragment implements MoviesView {
 
     @Override
     public void showProgressBar(boolean show) {
+        if(show)
+        {
+            progressBar.setVisibility(View.VISIBLE);
+        }
+        else {
+            progressBar.setVisibility(View.INVISIBLE);
+        }
 
     }
 
     @Override
     public void showError(String message) {
-
+        Toast.makeText(getActivity(),message,Toast.LENGTH_SHORT).show();
     }
 
 
     @Override
     public void setMoviesList(List<MoviesListDataDetails> moviesListDataDetailsList) {
-
+        moviesListAdapter.setMoviesListDataDetailsList(moviesListDataDetailsList);
+        moviesListAdapter.notifyDataSetChanged();
     }
 
     /**

@@ -21,8 +21,7 @@ public class MoviesListPresenterImpl implements MoviesListPresenter {
 
     @Override
     public void getMoviesList(String search_query, int page) {
-
-
+        moviesView.showProgressBar(true);
         moviesListProvider.getMovies(search_query, page, new MoviesListCallback() {
             @Override
             public void onSuccess(MoviesListData moviesListData) {

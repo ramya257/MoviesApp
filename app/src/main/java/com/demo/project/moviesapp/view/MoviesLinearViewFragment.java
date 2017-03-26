@@ -4,12 +4,21 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.demo.project.moviesapp.R;
+import com.demo.project.moviesapp.model.MoviesListProvider;
+import com.demo.project.moviesapp.model.RetrofitMoviesListProvider;
 import com.demo.project.moviesapp.model.data.MoviesListDataDetails;
+import com.demo.project.moviesapp.presenter.MoviesListPresenter;
+import com.demo.project.moviesapp.presenter.MoviesListPresenterImpl;
 
 import java.util.List;
 
@@ -30,6 +39,12 @@ public class MoviesLinearViewFragment extends Fragment implements MoviesView{
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private ProgressBar progressBar;
+    private RecyclerView recyclerView;
+    private MoviesListProvider moviesListProvider;
+    private MoviesListAdapter moviesListAdapter;
+    private MoviesListPresenter moviesListPresenter;
+
 
     private OnFragmentInteractionListener mListener;
 
@@ -68,8 +83,25 @@ public class MoviesLinearViewFragment extends Fragment implements MoviesView{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_movies_linear_view, container, false);
+        View view= inflater.inflate(R.layout.fragment_movies_linear_view, container, false);
+        recyclerView=(RecyclerView)view.findViewById(R.id.recyclerView);
+        progressBar=(ProgressBar)view.findViewById(R.id.progressBar);
+        moviesListAdapter=new MoviesListAdapter(getContext(),0);
+        initialise();
+
+        return  view;
     }
+
+    private void initialise() {
+        moviesListPresenter=new MoviesListPresenterImpl(this,new RetrofitMoviesListProvider());
+        LinearLayoutManager linearLayoutManager= new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(linearLayoutManager);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setAdapter(moviesListAdapter);
+        moviesListPresenter.getMoviesList("batman",1);
+    }
+
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
@@ -91,16 +123,26 @@ public class MoviesLinearViewFragment extends Fragment implements MoviesView{
 
     @Override
     public void showProgressBar(boolean show) {
+        if(show)
+        {
+            progressBar.setVisibility(View.VISIBLE);
+        }
+        else {
+            progressBar.setVisibility(View.INVISIBLE);
+        }
 
     }
 
     @Override
     public void showError(String message) {
+        Toast.makeText(getActivity(),message,Toast.LENGTH_SHORT).show();
 
     }
 
     @Override
     public void setMoviesList(List<MoviesListDataDetails> moviesListDataDetailsList) {
+        moviesListAdapter.setMoviesListDataDetailsList(moviesListDataDetailsList);
+        moviesListAdapter.notifyDataSetChanged();
 
     }
 
