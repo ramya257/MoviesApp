@@ -4,6 +4,7 @@ import android.app.SearchManager;
 import android.content.Context;
 import android.support.design.widget.TabLayout;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -25,6 +26,7 @@ public class MoviesActivity extends AppCompatActivity {
     private ViewPager viewPager;
     private TabLayout tablayout;
     private MoviesViewPagerAdapter moviesViewPagerAdapter;
+    public String search_query;
 
 
     @Override
@@ -49,6 +51,23 @@ public class MoviesActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.search_menu,menu);
+        final SearchView searchView = (SearchView)menu.findItem(R.id.action_search).getActionView();
+        SearchView.OnQueryTextListener queryTextListener = new SearchView.OnQueryTextListener() {
+            public boolean onQueryTextChange(String newText) {
+                return true;
+            }
+
+            public boolean onQueryTextSubmit(String query) {
+                search_query = query;
+                Bundle bundle = new Bundle();
+                bundle.putString("query",search_query);
+                MoviesLinearViewFragment moviesLinearViewFragment=MoviesLinearViewFragment.newInstance(search_query);
+                MoviesGridViewFragment moviesGridViewFragment=MoviesGridViewFragment.newInstance(search_query,"");
+                moviesLinearViewFragment.setArguments(bundle);
+                return true;
+            }
+        };
+        searchView.setOnQueryTextListener(queryTextListener);
         return true;
     }
 

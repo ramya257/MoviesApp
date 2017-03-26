@@ -1,6 +1,7 @@
 package com.demo.project.moviesapp.view;
 
 import android.content.Context;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,7 @@ import com.demo.project.moviesapp.model.data.MoviesListData;
 import com.demo.project.moviesapp.model.data.MoviesListDataDetails;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -24,31 +26,32 @@ import java.util.List;
 public class MoviesListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private static final int LINEAR_VIEW_TYPE=0;
     private static final int GRID_VIEW_TYPE=1;
+    private final int LIST = 2;
+    private final int LOAD_MORE = 3;
     private MoviesView moviesView;
+    private MoviesListData moviesListData;
     private List<MoviesListDataDetails> moviesListDataDetailsList=new ArrayList<>();
     private Context context;
     private int fragment_type;
     private LayoutInflater layoutInflater;
-    public MoviesListAdapter(Context context,int fragment_type)
-    {
+    public MoviesListAdapter(Context context,int fragment_type) {
         this.context = context;
-        this.fragment_type=fragment_type;
+        this.fragment_type = fragment_type;
         layoutInflater = LayoutInflater.from(context);
     }
 
 
+
+
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        if(viewType==0)
-        {
-            View view=layoutInflater.inflate(R.layout.movies_list_linear_view_item,parent,false);
-            return new MoviesListViewHolder(view);
-        }
-        else if(viewType==1)
-        {
-            View view=layoutInflater.inflate(R.layout.movies_list_grid_view_item,parent,false);
-            return new MoviesListViewHolder(view);
-        }
+            if (viewType == 0) {
+                View view = layoutInflater.inflate(R.layout.movies_list_linear_view_item, parent, false);
+                return new MoviesListViewHolder(view);
+            } else if (viewType == 1) {
+                View view = layoutInflater.inflate(R.layout.movies_list_grid_view_item, parent, false);
+                return new MoviesListViewHolder(view);
+            }
         return null;
     }
     @Override
@@ -83,13 +86,27 @@ public class MoviesListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             }
         });
 
-
     }
+    public void addItem(MoviesListDataDetails moviesListDataDetails)
+    {
+        moviesListDataDetailsList.addAll(Arrays.asList(moviesListDataDetails));
+    }
+
+
+
+
+    public int getTotalPages()
+    {
+      return (moviesListData.getTotalResults()/10)+1;
+    }
+
 
     @Override
     public int getItemCount() {
         return moviesListDataDetailsList.size();
+
     }
+
 
 
     public class MoviesListViewHolder extends RecyclerView.ViewHolder

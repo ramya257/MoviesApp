@@ -1,6 +1,7 @@
 package com.demo.project.moviesapp.view;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -30,7 +31,7 @@ import java.util.List;
  * Use the {@link MoviesLinearViewFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MoviesLinearViewFragment extends Fragment implements MoviesView{
+public class MoviesLinearViewFragment extends Fragment implements MoviesView {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -44,6 +45,8 @@ public class MoviesLinearViewFragment extends Fragment implements MoviesView{
     private MoviesListProvider moviesListProvider;
     private MoviesListAdapter moviesListAdapter;
     private MoviesListPresenter moviesListPresenter;
+    private int page=0;
+    private String search_query;
 
 
     private OnFragmentInteractionListener mListener;
@@ -57,15 +60,14 @@ public class MoviesLinearViewFragment extends Fragment implements MoviesView{
      * this fragment using the provided parameters.
      *
      * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
+     //* @param param2 Parameter 2.
      * @return A new instance of fragment MoviesLinearViewFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static MoviesLinearViewFragment newInstance(String param1,String param2) {
+    public static MoviesLinearViewFragment newInstance(String param1) {
         MoviesLinearViewFragment fragment = new MoviesLinearViewFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
@@ -75,7 +77,6 @@ public class MoviesLinearViewFragment extends Fragment implements MoviesView{
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
 
@@ -83,24 +84,31 @@ public class MoviesLinearViewFragment extends Fragment implements MoviesView{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view= inflater.inflate(R.layout.fragment_movies_linear_view, container, false);
-        recyclerView=(RecyclerView)view.findViewById(R.id.recyclerView);
-        progressBar=(ProgressBar)view.findViewById(R.id.progressBar);
-        moviesListAdapter=new MoviesListAdapter(getContext(),0);
+        View view = inflater.inflate(R.layout.fragment_movies_linear_view, container, false);
+        recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
+        progressBar = (ProgressBar) view.findViewById(R.id.progressBar);
+        moviesListAdapter = new MoviesListAdapter(getContext(), 0);
         initialise();
+        search(mParam1);
 
-        return  view;
+        return view;
     }
 
     private void initialise() {
-        moviesListPresenter=new MoviesListPresenterImpl(this,new RetrofitMoviesListProvider());
-        LinearLayoutManager linearLayoutManager= new LinearLayoutManager(getContext());
+        moviesListPresenter = new MoviesListPresenterImpl(this, new RetrofitMoviesListProvider());
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setHasFixedSize(true);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(moviesListAdapter);
-        moviesListPresenter.getMoviesList("batman",1);
     }
+    public void search(String search)
+    {
+        if(search!=null) {
+            moviesListPresenter.getMoviesList(search_query, ++page);
+        }
+    }
+
 
 
     // TODO: Rename method, update argument and hook method into UI event
