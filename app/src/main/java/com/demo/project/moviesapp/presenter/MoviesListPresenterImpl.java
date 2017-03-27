@@ -33,7 +33,7 @@ public class MoviesListPresenterImpl implements MoviesListPresenter {
                 }
                 else
                 {
-                   moviesView.showError(moviesListData.getError());
+                   moviesView.showError("no item to load..! ");
                 }
                 moviesView.showProgressBar(false);
 

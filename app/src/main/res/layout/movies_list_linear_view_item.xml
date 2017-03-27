@@ -6,7 +6,9 @@
     android:id="@+id/movies_linear_card"
     app:contentPadding="4dp"
     app:cardCornerRadius="1dp"
-    android:layout_margin="2dp"
+    android:layout_marginLeft="4dp"
+    android:layout_marginRight="4dp"
+    android:layout_marginTop="4dp"
     xmlns:android="http://schemas.android.com/apk/res/android">
         <LinearLayout
             android:layout_width="match_parent"
@@ -22,6 +24,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/padding_small"
+                android:layout_weight="7"
                 android:gravity="center"
                 android:orientation="vertical">
                 <TextView
@@ -30,6 +33,7 @@
                     android:id="@+id/movieTitle"
                     android:text="@string/movie_title"
                     android:gravity="center"
+                    android:layout_weight="3"
                     android:textSize="20sp"
                     android:padding="@dimen/padding_small"
                     android:textColor="@color/colorPrimaryDark"
@@ -50,6 +54,7 @@
                     android:id="@id/movieYear"
                     android:text="@string/movie_year"
                     android:padding="2dp"
+                    android:layout_weight="2"
                     android:gravity="center"
                     android:textColor="@color/movieTextColor"
                     android:textSize="12sp"
