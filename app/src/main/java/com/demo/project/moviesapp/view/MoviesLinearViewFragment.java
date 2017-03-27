@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -51,7 +52,6 @@ public class MoviesLinearViewFragment extends Fragment implements MoviesView {
     private MoviesListPresenter moviesListPresenter;
     public static int page=0;
     private Button button;
-    private boolean isLoading=true;
     private static  String search_query;
 
 
@@ -93,6 +93,7 @@ public class MoviesLinearViewFragment extends Fragment implements MoviesView {
         View view = inflater.inflate(R.layout.fragment_movies_linear_view, container, false);
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
         progressBar = (ProgressBar) view.findViewById(R.id.progressBar);
+        moviesListAdapter = new MoviesListAdapter(getContext(), 0);
         button=(Button)view.findViewById(R.id.load_more_button);
         button.setVisibility(View.INVISIBLE);
       button.setOnClickListener(new View.OnClickListener() {
@@ -102,7 +103,6 @@ public class MoviesLinearViewFragment extends Fragment implements MoviesView {
                     requestMovies(search_query);
             }
         });
-        moviesListAdapter = new MoviesListAdapter(getContext(), 0);
         initialise();
         return view;
     }
@@ -124,6 +124,18 @@ public class MoviesLinearViewFragment extends Fragment implements MoviesView {
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(moviesListAdapter);
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+
+            }
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+            }
+        });
     }
 
     // TODO: Rename method, update argument and hook method into UI event
