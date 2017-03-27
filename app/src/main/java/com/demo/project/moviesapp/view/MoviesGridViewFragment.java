@@ -7,10 +7,12 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -45,7 +47,9 @@ public class MoviesGridViewFragment extends Fragment implements MoviesView {
     private MoviesListProvider moviesListProvider;
     private MoviesListAdapter moviesListAdapter;
     private MoviesListPresenter moviesListPresenter;
-    private int page=0;
+    public static int page=0;
+    private static String search_query;
+    private Button button;
 
     private OnFragmentInteractionListener mListener;
 
@@ -88,12 +92,26 @@ public class MoviesGridViewFragment extends Fragment implements MoviesView {
         progressBar=(ProgressBar)view.findViewById(R.id.progressBar);
         recyclerView=(RecyclerView)view.findViewById(R.id.recyclerView);
         moviesListAdapter=new MoviesListAdapter(getContext(),1);
+        button=(Button)view.findViewById(R.id.load_more_button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                requestMovies(search_query);
+            }
+        });
         initialise();
         return view;
     }
     public void requestMovies(String query)
     {
-        moviesListPresenter.getMoviesList(query,2);
+        search_query=query;
+        page=page+1;
+        moviesListPresenter.getMoviesList(query,page);
+    }
+    public void clearPageNo()
+    {
+        page=0;
+        Log.d("page no is",String.valueOf(page));
     }
 
     private void initialise() {
@@ -152,8 +170,13 @@ public class MoviesGridViewFragment extends Fragment implements MoviesView {
 
     @Override
     public void setMoviesList(List<MoviesListDataDetails> moviesListDataDetailsList) {
-        moviesListAdapter.setMoviesListDataDetailsList(moviesListDataDetailsList);
-        moviesListAdapter.notifyDataSetChanged();
+        if (moviesListDataDetailsList.size() == 0) {
+            moviesListAdapter.setMoviesListDataDetailsList(moviesListDataDetailsList);
+            moviesListAdapter.notifyDataSetChanged();
+        } else {
+            moviesListAdapter.addList(moviesListDataDetailsList);
+            moviesListAdapter.notifyDataSetChanged();
+        }
     }
 
     /**

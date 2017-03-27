@@ -68,6 +68,17 @@ public class MoviesListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     {
         this.moviesListDataDetailsList=moviesListDataDetailsList;
     }
+    public void addList(List<MoviesListDataDetails> moviesListDataDetailsList)
+    {
+       this.moviesListDataDetailsList.addAll(moviesListDataDetailsList);
+        notifyDataSetChanged();
+    }
+    public void removeList()
+    {
+        this.moviesListDataDetailsList.clear();
+        notifyDataSetChanged();
+    }
+
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
@@ -83,12 +94,8 @@ public class MoviesListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
                 Toast.makeText(view.getContext(),moviesListDataDetails.getTitle(),Toast.LENGTH_SHORT).show();
             }
         });
-
-
-
     }
-
-
+    
     @Override
     public int getItemCount() {
         return moviesListDataDetailsList.size();

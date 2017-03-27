@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AbsListView;
+import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -48,7 +49,9 @@ public class MoviesLinearViewFragment extends Fragment implements MoviesView {
     private MoviesListProvider moviesListProvider;
     private MoviesListAdapter moviesListAdapter;
     private MoviesListPresenter moviesListPresenter;
-    private static int page=0;
+    public static int page=0;
+    private Button button;
+    private static  String search_query;
 
 
     private OnFragmentInteractionListener mListener;
@@ -89,15 +92,29 @@ public class MoviesLinearViewFragment extends Fragment implements MoviesView {
         View view = inflater.inflate(R.layout.fragment_movies_linear_view, container, false);
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
         progressBar = (ProgressBar) view.findViewById(R.id.progressBar);
+        button=(Button)view.findViewById(R.id.load_more_button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                    Log.d("Load more", search_query);
+                    requestMovies(search_query);
+            }
+        });
         moviesListAdapter = new MoviesListAdapter(getContext(), 0);
         initialise();
         return view;
     }
-    public void requestMovies(String query)
-    {
-        moviesListPresenter.getMoviesList(query,1);
+    public void requestMovies(String query) {
+            search_query = query;
+            page = page + 1;
+            moviesListPresenter.getMoviesList(query, page);
     }
-
+    public void clearPageNo()
+    {
+        moviesListAdapter.removeList();
+        page=0;
+        Log.d("page no is",String.valueOf(page));
+    }
     private void initialise() {
         moviesListPresenter = new MoviesListPresenterImpl(this, new RetrofitMoviesListProvider());
         final LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
@@ -154,9 +171,16 @@ public class MoviesLinearViewFragment extends Fragment implements MoviesView {
 
     @Override
     public void setMoviesList(List<MoviesListDataDetails> moviesListDataDetailsList) {
-        moviesListAdapter.setMoviesListDataDetailsList(moviesListDataDetailsList);
-        moviesListAdapter.notifyDataSetChanged();
-
+        if(moviesListAdapter.getItemCount()==0) {
+            moviesListAdapter.setMoviesListDataDetailsList(moviesListDataDetailsList);
+            moviesListAdapter.notifyDataSetChanged();
+        }
+        else
+        {
+            Log.d("entered","ok");
+            moviesListAdapter.addList(moviesListDataDetailsList);
+            moviesListAdapter.notifyDataSetChanged();
+        }
     }
 
     /**

@@ -11,9 +11,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -68,7 +70,11 @@ public class MoviesActivity extends AppCompatActivity {
         searchView.setSubmitButtonEnabled(true);
         SearchView.OnQueryTextListener queryTextListener = new SearchView.OnQueryTextListener() {
             public boolean onQueryTextChange(String newText) {
-                return true;
+                if(TextUtils.isEmpty(newText)) {
+                    moviesLinearViewFragment.clearPageNo();
+                    moviesGridViewFragment.clearPageNo();
+                }
+                return false;
             }
 
             public boolean onQueryTextSubmit(String query) {
