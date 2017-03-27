@@ -110,6 +110,7 @@ public class MoviesGridViewFragment extends Fragment implements MoviesView {
     }
     public void clearPageNo()
     {
+        moviesListAdapter.removeList();
         page=0;
         Log.d("page no is",String.valueOf(page));
     }

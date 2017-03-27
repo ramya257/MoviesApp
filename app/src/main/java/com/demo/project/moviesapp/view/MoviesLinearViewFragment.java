@@ -93,6 +93,7 @@ public class MoviesLinearViewFragment extends Fragment implements MoviesView {
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
         progressBar = (ProgressBar) view.findViewById(R.id.progressBar);
         button=(Button)view.findViewById(R.id.load_more_button);
+        button.setVisibility(View.INVISIBLE);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
