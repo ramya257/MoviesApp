@@ -91,7 +91,7 @@ public class MoviesGridViewFragment extends Fragment implements MoviesView {
         View view= inflater.inflate(R.layout.fragment_movies_grid_view, container, false);
         progressBar=(ProgressBar)view.findViewById(R.id.progressBar);
         recyclerView=(RecyclerView)view.findViewById(R.id.recyclerView);
-        moviesListAdapter=new MoviesListAdapter(getContext(),1);
+        moviesListAdapter= new MoviesListAdapter(getContext(), 1);
         button=(Button)view.findViewById(R.id.load_more_button);
         button.setVisibility(View.INVISIBLE);
         button.setOnClickListener(new View.OnClickListener() {
@@ -111,7 +111,7 @@ public class MoviesGridViewFragment extends Fragment implements MoviesView {
     }
     public void clearPageNo()
     {
-        button.setVisibility(View.INVISIBLE);
+       button.setVisibility(View.INVISIBLE);
         moviesListAdapter.removeList();
         page=0;
         Log.d("page no is",String.valueOf(page));

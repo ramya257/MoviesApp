@@ -23,7 +23,7 @@ import java.util.List;
  * Created by ramya on 25/3/17.
  */
 
-public class MoviesListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public  class MoviesListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private static final int LINEAR_VIEW_TYPE=0;
     private static final int GRID_VIEW_TYPE=1;
     private MoviesView moviesView;
@@ -95,7 +95,7 @@ public class MoviesListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             }
         });
     }
-    
+
     @Override
     public int getItemCount() {
         return moviesListDataDetailsList.size();

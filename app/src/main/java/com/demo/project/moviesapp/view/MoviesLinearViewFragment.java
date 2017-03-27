@@ -51,6 +51,7 @@ public class MoviesLinearViewFragment extends Fragment implements MoviesView {
     private MoviesListPresenter moviesListPresenter;
     public static int page=0;
     private Button button;
+    private boolean isLoading=true;
     private static  String search_query;
 
 
@@ -94,7 +95,7 @@ public class MoviesLinearViewFragment extends Fragment implements MoviesView {
         progressBar = (ProgressBar) view.findViewById(R.id.progressBar);
         button=(Button)view.findViewById(R.id.load_more_button);
         button.setVisibility(View.INVISIBLE);
-        button.setOnClickListener(new View.OnClickListener() {
+      button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                     Log.d("Load more", search_query);
@@ -122,7 +123,6 @@ public class MoviesLinearViewFragment extends Fragment implements MoviesView {
         final LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(moviesListAdapter);
     }
 
@@ -158,8 +158,10 @@ public class MoviesLinearViewFragment extends Fragment implements MoviesView {
         if(show)
         {
             progressBar.setVisibility(View.VISIBLE);
+            recyclerView.setVisibility(View.INVISIBLE);
         }
         else {
+            recyclerView.setVisibility(View.VISIBLE);
             progressBar.setVisibility(View.INVISIBLE);
         }
 
@@ -180,7 +182,6 @@ public class MoviesLinearViewFragment extends Fragment implements MoviesView {
         }
         else
         {
-            Log.d("entered","ok");
             moviesListAdapter.addList(moviesListDataDetailsList);
             moviesListAdapter.notifyDataSetChanged();
         }
