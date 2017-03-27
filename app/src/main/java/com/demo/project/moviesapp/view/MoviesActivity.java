@@ -3,6 +3,7 @@ package com.demo.project.moviesapp.view;
 import android.app.SearchManager;
 import android.content.Context;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
@@ -18,6 +19,9 @@ import android.widget.Toast;
 
 import com.demo.project.moviesapp.R;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import butterknife.BindView;
 
 import static java.security.AccessController.getContext;
@@ -27,7 +31,8 @@ public class MoviesActivity extends AppCompatActivity {
     private ViewPager viewPager;
     private TabLayout tablayout;
     private MoviesViewPagerAdapter moviesViewPagerAdapter;
-    public String search_query;
+    private MoviesLinearViewFragment moviesLinearViewFragment;
+    private MoviesGridViewFragment moviesGridViewFragment;
 
 
     @Override
@@ -42,11 +47,14 @@ public class MoviesActivity extends AppCompatActivity {
         setupViewPager(viewPager);
         tablayout=(TabLayout)findViewById(R.id.tabs);
         tablayout.setupWithViewPager(viewPager);
+
     }
     private void setupViewPager(ViewPager viewPager) {
+        moviesLinearViewFragment=new MoviesLinearViewFragment();
+        moviesGridViewFragment= new MoviesGridViewFragment();
         moviesViewPagerAdapter=new MoviesViewPagerAdapter(getSupportFragmentManager());
-        moviesViewPagerAdapter.addFragment(new MoviesLinearViewFragment(),"MoviesLinearList");
-        moviesViewPagerAdapter.addFragment(new MoviesGridViewFragment(),"MoviesGridList");
+        moviesViewPagerAdapter.addFragment(moviesLinearViewFragment,"MoviesLinearList");
+        moviesViewPagerAdapter.addFragment(moviesGridViewFragment,"MoviesGridList");
         viewPager.setAdapter(moviesViewPagerAdapter);
     }
     @Override
@@ -65,11 +73,14 @@ public class MoviesActivity extends AppCompatActivity {
 
             public boolean onQueryTextSubmit(String query) {
                 Toast.makeText(getBaseContext(),query,Toast.LENGTH_SHORT).show();
+                moviesLinearViewFragment.requestMovies(query);
+                moviesGridViewFragment.requestMovies(query);
                 return true;
             }
         };
         searchView.setOnQueryTextListener(queryTextListener);
         return true;
     }
+
 
 }

@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -44,6 +45,7 @@ public class MoviesGridViewFragment extends Fragment implements MoviesView {
     private MoviesListProvider moviesListProvider;
     private MoviesListAdapter moviesListAdapter;
     private MoviesListPresenter moviesListPresenter;
+    private int page=0;
 
     private OnFragmentInteractionListener mListener;
 
@@ -89,6 +91,10 @@ public class MoviesGridViewFragment extends Fragment implements MoviesView {
         initialise();
         return view;
     }
+    public void requestMovies(String query)
+    {
+        moviesListPresenter.getMoviesList(query,2);
+    }
 
     private void initialise() {
         moviesListPresenter= new MoviesListPresenterImpl(this,new RetrofitMoviesListProvider());
@@ -96,8 +102,8 @@ public class MoviesGridViewFragment extends Fragment implements MoviesView {
         recyclerView.setLayoutManager(gridLayoutManager);
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(moviesListAdapter);
-        moviesListPresenter.getMoviesList("batman",2);
     }
+
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
@@ -115,6 +121,15 @@ public class MoviesGridViewFragment extends Fragment implements MoviesView {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public void hideKeyboard() {
+        View view = getActivity().getCurrentFocus();
+        if (view != null) {
+            InputMethodManager imm=(InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
     }
 
     @Override

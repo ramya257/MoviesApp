@@ -9,6 +9,7 @@ import java.util.List;
  */
 
 public interface MoviesView {
+    void hideKeyboard();
     void showProgressBar(boolean show);
     void showError(String message);
     void setMoviesList(List<MoviesListDataDetails> moviesListDataDetailsList);

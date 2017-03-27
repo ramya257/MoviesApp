@@ -27,6 +27,7 @@ public class MoviesListPresenterImpl implements MoviesListPresenter {
             public void onSuccess(MoviesListData moviesListData) {
                 if(moviesListData.isResponse())
                 {
+                    moviesView.hideKeyboard();
                     moviesView.setMoviesList(moviesListData.getSearch());
                     moviesView.showProgressBar(false);
                 }

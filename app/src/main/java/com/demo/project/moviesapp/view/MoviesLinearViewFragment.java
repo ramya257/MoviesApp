@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AbsListView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -90,8 +91,11 @@ public class MoviesLinearViewFragment extends Fragment implements MoviesView {
         progressBar = (ProgressBar) view.findViewById(R.id.progressBar);
         moviesListAdapter = new MoviesListAdapter(getContext(), 0);
         initialise();
-        moviesListPresenter.getMoviesList("batman",++page);
         return view;
+    }
+    public void requestMovies(String query)
+    {
+        moviesListPresenter.getMoviesList(query,1);
     }
 
     private void initialise() {
@@ -119,6 +123,15 @@ public class MoviesLinearViewFragment extends Fragment implements MoviesView {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public void hideKeyboard() {
+            View view = getActivity().getCurrentFocus();
+            if (view != null) {
+                InputMethodManager imm=(InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+            }
     }
 
     @Override
@@ -160,4 +173,5 @@ public class MoviesLinearViewFragment extends Fragment implements MoviesView {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
+
 }
