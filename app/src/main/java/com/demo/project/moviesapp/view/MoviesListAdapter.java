@@ -26,8 +26,6 @@ import java.util.List;
 public class MoviesListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private static final int LINEAR_VIEW_TYPE=0;
     private static final int GRID_VIEW_TYPE=1;
-    private final int LIST = 2;
-    private final int LOAD_MORE = 3;
     private MoviesView moviesView;
     private MoviesListData moviesListData;
     private List<MoviesListDataDetails> moviesListDataDetailsList=new ArrayList<>();
@@ -86,18 +84,8 @@ public class MoviesListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             }
         });
 
-    }
-    public void addItem(MoviesListDataDetails moviesListDataDetails)
-    {
-        moviesListDataDetailsList.addAll(Arrays.asList(moviesListDataDetails));
-    }
 
 
-
-
-    public int getTotalPages()
-    {
-      return (moviesListData.getTotalResults()/10)+1;
     }
 
 

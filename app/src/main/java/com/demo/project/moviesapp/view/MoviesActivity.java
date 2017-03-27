@@ -14,6 +14,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.demo.project.moviesapp.R;
 
@@ -51,19 +52,19 @@ public class MoviesActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.search_menu,menu);
+        SearchManager searchManager = (SearchManager)
+                getSystemService(Context.SEARCH_SERVICE);
         final SearchView searchView = (SearchView)menu.findItem(R.id.action_search).getActionView();
+        searchView.setSearchableInfo(searchManager.
+                getSearchableInfo(getComponentName()));
+        searchView.setSubmitButtonEnabled(true);
         SearchView.OnQueryTextListener queryTextListener = new SearchView.OnQueryTextListener() {
             public boolean onQueryTextChange(String newText) {
                 return true;
             }
 
             public boolean onQueryTextSubmit(String query) {
-                search_query = query;
-                Bundle bundle = new Bundle();
-                bundle.putString("query",search_query);
-                MoviesLinearViewFragment moviesLinearViewFragment=MoviesLinearViewFragment.newInstance(search_query);
-                MoviesGridViewFragment moviesGridViewFragment=MoviesGridViewFragment.newInstance(search_query,"");
-                moviesLinearViewFragment.setArguments(bundle);
+                Toast.makeText(getBaseContext(),query,Toast.LENGTH_SHORT).show();
                 return true;
             }
         };

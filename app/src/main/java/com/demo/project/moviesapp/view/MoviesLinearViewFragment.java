@@ -8,9 +8,11 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -45,8 +47,7 @@ public class MoviesLinearViewFragment extends Fragment implements MoviesView {
     private MoviesListProvider moviesListProvider;
     private MoviesListAdapter moviesListAdapter;
     private MoviesListPresenter moviesListPresenter;
-    private int page=0;
-    private String search_query;
+    private static int page=0;
 
 
     private OnFragmentInteractionListener mListener;
@@ -89,27 +90,18 @@ public class MoviesLinearViewFragment extends Fragment implements MoviesView {
         progressBar = (ProgressBar) view.findViewById(R.id.progressBar);
         moviesListAdapter = new MoviesListAdapter(getContext(), 0);
         initialise();
-        search(mParam1);
-
+        moviesListPresenter.getMoviesList("batman",++page);
         return view;
     }
 
     private void initialise() {
         moviesListPresenter = new MoviesListPresenterImpl(this, new RetrofitMoviesListProvider());
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        final LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setHasFixedSize(true);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(moviesListAdapter);
     }
-    public void search(String search)
-    {
-        if(search!=null) {
-            moviesListPresenter.getMoviesList(search_query, ++page);
-        }
-    }
-
-
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
