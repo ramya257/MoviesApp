@@ -4,4 +4,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="load_more">Load more</string>
+    <string name="movie_title">Movie Title</string>
+    <string name="movie_type">Movie Type</string>
+    <string name="movie_year">Movie Year</string>
 </resources>

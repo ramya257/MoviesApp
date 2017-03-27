@@ -34,13 +34,22 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/movieDescription"
-                android:text="Movie Description"
+                android:id="@+id/movieType"
+                android:text="Movie Type"
                 android:textSize="12sp"
-                android:textColor="@color/movieDescriptionColor"
+                android:textColor="@color/movieTextColor"
                 android:layout_below="@+id/movieTitle"
                 android:gravity="center_horizontal"
                 android:padding="@dimen/padding_small"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/movieYear"
+                android:layout_below="@+id/movieType"
+                android:text="Movie Year"
+                android:gravity="center_horizontal"
+                android:textSize="12sp"
+                android:textColor="@color/movieTextColor"/>
 
 
         </RelativeLayout>

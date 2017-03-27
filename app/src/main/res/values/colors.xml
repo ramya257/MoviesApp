@@ -3,7 +3,7 @@
     <color name="colorPrimary">#FF8390</color>
     <color name="colorPrimaryDark">#FF7785</color>
     <color name="colorAccent">#076689</color>
-    <color name="movieDescriptionColor">#115A51</color>
+    <color name="movieTextColor">#115A51</color>
     <color name="textHintColor">#F8F1FF</color>
     <color name="white">#ffffff</color>
 </resources>

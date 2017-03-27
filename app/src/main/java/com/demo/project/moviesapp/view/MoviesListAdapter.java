@@ -86,14 +86,14 @@ public  class MoviesListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         MoviesListViewHolder moviesListViewHolder=(MoviesListViewHolder)holder;
         Glide.with(context).load(moviesListDataDetails.getPoster()).into(moviesListViewHolder.movieImage);
         moviesListViewHolder.movieTitle.setText(moviesListDataDetails.getTitle());
-        moviesListViewHolder.movieDescription.setText("Type:"+""+moviesListDataDetails.getType()+""
-                +""+"Year"+""+moviesListDataDetails.getYear());
         moviesListViewHolder.movieImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(view.getContext(),moviesListDataDetails.getTitle(),Toast.LENGTH_SHORT).show();
             }
         });
+        moviesListViewHolder.movieType.setText("Type:"+""+moviesListDataDetails.getType());
+        moviesListViewHolder.movieYear.setText(("Year:"+""+moviesListDataDetails.getYear()));
     }
 
     @Override
@@ -108,13 +108,15 @@ public  class MoviesListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     {
         private ImageView movieImage;
         private TextView movieTitle;
-        private TextView movieDescription;
+        private TextView movieType;
+        private TextView movieYear;
 
         public MoviesListViewHolder(View itemView) {
             super(itemView);
             movieImage=(ImageView)itemView.findViewById(R.id.moviePoster);
             movieTitle=(TextView)itemView.findViewById(R.id.movieTitle);
-            movieDescription=(TextView)itemView.findViewById(R.id.movieDescription);
+            movieType=(TextView)itemView.findViewById(R.id.movieType);
+            movieYear=(TextView)itemView.findViewById(R.id.movieYear);
         }
 
     }
