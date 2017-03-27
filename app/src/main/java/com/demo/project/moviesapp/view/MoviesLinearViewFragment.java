@@ -112,6 +112,7 @@ public class MoviesLinearViewFragment extends Fragment implements MoviesView {
     }
     public void clearPageNo()
     {
+        button.setVisibility(View.INVISIBLE);
         moviesListAdapter.removeList();
         page=0;
         Log.d("page no is",String.valueOf(page));
@@ -172,6 +173,7 @@ public class MoviesLinearViewFragment extends Fragment implements MoviesView {
 
     @Override
     public void setMoviesList(List<MoviesListDataDetails> moviesListDataDetailsList) {
+        button.setVisibility(View.VISIBLE);
         if(moviesListAdapter.getItemCount()==0) {
             moviesListAdapter.setMoviesListDataDetailsList(moviesListDataDetailsList);
             moviesListAdapter.notifyDataSetChanged();
